@@ -2,14 +2,14 @@ const mongoose = require('mongoose');
 
 const UrlSchema = new mongoose.Schema({
 
-    _id: {
+    hash: {
         type: String,
         required: "_id can't be empty",
         unique: true,
     },
     url: {
         type: String,
-        required: 'Your password is required',
+        required: 'can not enter empty url in db',
         min: 6,
         max: 16
     },  
@@ -30,6 +30,6 @@ const UrlSchema = new mongoose.Schema({
         default: 0
     }
 
-}, {timestamps: true, _id: false });
+}, {timestamps: true });
 
 module.exports = mongoose.model('Url', UrlSchema);

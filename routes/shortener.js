@@ -3,12 +3,10 @@ const { check } = require("express-validator");
 const Shortener = require("../controllers/shortener")
 const router = express.Router();
 
-router.post("/urlShortener", 
+router.post("/urlShortener",
 [
-    check("url").not().isEmpty().isURL().withMessage("Enter a valid url for shortening"),
-    check("days")
-      .isNumeric()
-      .withMessage("Enter a valid number"),
+    check("url", "Enter a valid url for shortening").not().isEmpty().bail().isURL(),
+    check("day", "Enter a valid number").isNumeric(),
   ], Shortener.urlShortener);
 
 module.exports = router;

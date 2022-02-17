@@ -3,7 +3,7 @@ const jwtW = require("jsonwebtoken");
 
 const secretKey = "shhhhhhared-secret";
 
-const unprotected = [ "/", "/api/login", /\/[0-9A-Za-z]{7}/];
+const unprotected = [ "/", "/api/login", /^\/[0-9A-Za-z]{7}$/];
 
 
 module.exports.tokenAuth = jwt({

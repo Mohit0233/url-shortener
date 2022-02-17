@@ -10,8 +10,7 @@ module.exports = (app) => {
     res.sendFile(`${__dirname}/public/index.html`);
   });
 
-  app.get("/:hash", [ check("hash").custom((value, { req }) => console.log(value)),
-  ], Caller.callUrl);
+  app.get("/:hash([0-9A-Za-z]{7})", Caller.callUrl);
 
   app.use("/api/", auth);
   app.use("/api/", shortener);
